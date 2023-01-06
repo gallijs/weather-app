@@ -1,24 +1,23 @@
-# README
+# Weather App
+This application uses OpenWeatherMap API to show you your current and future weather forecast.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Configuration
+This app utilizes a Ruby on Rails backend and React.js frontend.
+- Install rbenv
+  https://github.com/rbenv/rbenv
+- Install correct ruby version
+  `rbenv install $(cat .ruby-version)`
+- Install redis
+  https://redis.io/docs/getting-started/
+- Install ruby on rails
+  https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails
+- Install gems
+  `bundle install`
+- Install frontend packages
+  `yarn install`
+- Run server
+  Note: `rails s` does not build the React app you must use the following command
+  `./bin/dev`
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Testing
+`bundle exec rspec`
