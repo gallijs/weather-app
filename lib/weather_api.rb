@@ -15,7 +15,7 @@ module WeatherAPI
       units: units,
       appid: API_KEY
     }
-    response = HTTParty.get("#{API_HOST}/data/2.5/forecast/daily", query: params)
+    response = HTTParty.get("#{API_HOST}/data/2.5/forecast", query: params)
     parsed = JSON.parse(response.body, object_class: OpenStruct)
 
     raise parsed["message"] if (response.code > 400)

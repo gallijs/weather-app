@@ -28,7 +28,7 @@ RSpec.describe 'Forecasts', type: :request do
         get '/forecast', params: { forecast: { location: 'Toronto', units: 'metric' }}
 
         expect(response).to have_http_status(:success)
-        expect(forecast.weather_conditions.length).to eq(7)
+        expect(forecast.weather_conditions.length).to eq(40)
         expect(forecast.temperature_unit).to eq('metric')
       end
     end
@@ -53,7 +53,7 @@ RSpec.describe 'Forecasts', type: :request do
 
         expect(response).to have_http_status(:success)
         expect(forecast.city.name).to eq("Toronto")
-        expect(forecast.weather_conditions.length).to eq(7)
+        expect(forecast.weather_conditions.length).to eq(40)
         expect(forecast.temperature_unit).to eq('metric')
       end
     end

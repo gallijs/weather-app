@@ -30,7 +30,7 @@ describe "WeatherAPI" do
 
         expect(forecast.class).to eq(WeatherAPI::Forecast)
         expect(forecast.city.name).to eq("New York")
-        expect(forecast.weather_conditions.length).to eq(7)
+        expect(forecast.weather_conditions.length).to eq(40)
         expect(forecast.temperature_unit).to eq 'imperial'
       end
     end
