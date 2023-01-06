@@ -1,8 +1,9 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import WeatherContainer from './WeatherContainer'
 
 const App = () => {
-  return (<div>Hello, World!</div>)
+  return (<WeatherContainer />)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
