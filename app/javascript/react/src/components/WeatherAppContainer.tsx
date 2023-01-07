@@ -85,15 +85,15 @@ const WeatherAppContainer = () => {
             <div className="info-side">
                 <div className="today-info-container">
                     <div className="today-info">
-                        <div className="precipitation">
+                        <div>
                             <span className="title">CACHED</span><span className="value">{cached ? 'True' : 'False'}</span>
                             <div className="clear"></div>
                         </div>
-                        <div className="humidity">
+                        <div>
                             <span className="title">HIGH</span><span className="value">{parseInt(main?.temperature_high)}°</span>
                             <div className="clear"></div>
                         </div>
-                        <div className="wind">
+                        <div>
                             <span className="title">LOW</span><span className="value">{parseInt(main?.temperature_low)}°</span>
                             <div className="clear"></div>
                         </div>
