@@ -21,3 +21,7 @@ This app utilizes a Ruby on Rails backend and React.js frontend.
 
 ## Testing
 `bundle exec rspec`
+
+## Screenshots
+
+<img width="739" alt="Screenshot 2023-01-06 at 8 37 37 PM" src="https://user-images.githubusercontent.com/3744916/211122901-50ab23d0-8553-4922-8bf7-3ceb6a4ab46f.png">
