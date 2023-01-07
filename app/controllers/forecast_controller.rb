@@ -18,7 +18,6 @@ class ForecastController < ApplicationController
 
       return render json: { forecast: @forecast, cached: false }
     rescue => e
-      logger.error e
       return render json: { message: "An error occurred while fetching the forecast." }, status: :unprocessable_entity
     end
   end
