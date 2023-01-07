@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import queryString from 'qs'
 import { debounce } from 'lodash'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationArrow, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styles.css'
 
 
@@ -27,6 +29,22 @@ const WeatherAppContainer = () => {
         setLocation(event.target.value)
     }
 
+    const toggleUnit = () => {
+        unit === 'f' ? setUnit('c') : setUnit('f')
+    }
+
+    const fetchCurrentLocation = () => {
+        navigator.geolocation.getCurrentPosition(async (result) => {
+            const { latitude, longitude } = result.coords
+
+            const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+            const response = await fetch(url)
+            const geocoded = await response.json()
+
+            setLocation(`${geocoded.city}, ${geocoded.countryCode}`)
+        })
+    }
+
     // Fetch forecast
     useEffect(() => {
         const fetchData = async () => {
@@ -39,8 +57,12 @@ const WeatherAppContainer = () => {
             const url = `/forecast?${params}`
             const response = await fetch(url)
             const json = await response.json()
-            setForecast(json.forecast)
-            setCached(json.cached)
+
+            // Set the forecast if the API responds successfully
+            if (response.status === 200) {
+                setForecast(json.forecast)
+                setCached(json.cached)
+            }
         }
         fetchData()
     }, [location, unit])
@@ -90,7 +112,16 @@ const WeatherAppContainer = () => {
                     </ul>
                 </div>
                 <div className="location-container">
-                    <input id="search" type="text" name="location" placeholder="San Francisco" onChange={debounce(updateInput, 2500)} />
+                    <div id="search">
+                        <input id="search" type="text" name="location" placeholder="San Francisco" onChange={debounce(updateInput, 250)} />
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </div>
+                    <nav>
+                        <button id="locateBtn" onClick={fetchCurrentLocation}>
+                            <FontAwesomeIcon icon={faLocationArrow} />
+                        </button>
+                        <button id="unitBtn" onClick={toggleUnit}>°{unit}</button>
+                    </nav>
                 </div>
             </div>
         </div>)
