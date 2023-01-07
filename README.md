@@ -1,6 +1,8 @@
 # Weather App
 This application uses OpenWeatherMap API to show you your current and future weather forecast.
 
+Working Demo: https://weatherjs.fly.dev/
+
 ## Configuration
 This app utilizes a Ruby on Rails backend and React.js frontend.
 - Install rbenv
